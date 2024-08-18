@@ -1,0 +1,7 @@
+@for (cat of (cat$ | async)?.cats; track $index) {
+  <app-cat-card [cat]="cat"></app-cat-card>
+}
+
+@if ((cat$ | async)?.loading) {
+  <mat-spinner></mat-spinner>
+}
