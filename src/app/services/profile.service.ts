@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Profile } from '../models/profile.model';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,10 @@ export class ProfileService {
   // profilesURL = 'http://localhost:3000/profile/all';
   profiles: Profile[] = [];
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService,
+  ) {
     // this.http.get(`${this.url}/all`).subscribe((data) => {
     //   this.profiles = data as Profile[];
     //   console.log(data);
@@ -26,7 +30,11 @@ export class ProfileService {
   // }
 
   getAllProfiles() {
-    return this.http.get<Profile[]>(`${this.url}/all`);
+    return this.http.get<Profile[]>(`${this.url}/all`, {
+      headers: {
+        Authorization: this.authService.idToken,
+      },
+    });
   }
 
   getOneProfile(id: string) {

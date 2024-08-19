@@ -1,4 +1,9 @@
-<router-outlet></router-outlet>
+@if (isUserLoggedIn) {
+  <button mat-stroked-button (click)="logout()">Logout</button>
+  <router-outlet></router-outlet>
+} @else {
+  <button mat-flat-button (click)="login()">Login with Google</button>
+}
 
 <!--@for (profile of profileService.profiles; track $index) {-->
 <!--  <h5>{{ profile.name }}</h5>-->

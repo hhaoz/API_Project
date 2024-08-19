@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "API-project": {
+    "api-project": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "API-project:build:production"
+              "buildTarget": "api-project:build:production"
             },
             "development": {
-              "buildTarget": "API-project:build:development"
+              "buildTarget": "api-project:build:development"
             }
           },
           "defaultConfiguration": "development"
